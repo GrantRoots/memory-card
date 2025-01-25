@@ -1,3 +1,18 @@
 body {
   margin: 0;
 }
+
+.contanier {
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  height: 6.3vh;
+}
+
+h1 {
+  margin: 0;
+}

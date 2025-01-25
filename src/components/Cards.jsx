@@ -1,26 +1,61 @@
 import { useEffect, useState } from "react";
 import "../styles/cards.css";
 
-function Cards() {
+function CardsController(props) {
   // is there a way to make it so I know which ones which
   const [images, setImages] = useState({
-    image1: null,
-    image2: null,
-    image3: null,
-    image4: null,
-    image5: null,
-    image6: null,
-    image7: null,
-    image8: null,
-    image9: null,
-    image10: null,
+    image1: {
+      name: "Aragorn",
+      data: null,
+    },
+    image2: {
+      name: "Gollum",
+      data: null,
+    },
+    image3: {
+      name: "Frodo Baggins",
+      data: null,
+    },
+    image4: {
+      name: "Gandalf",
+      data: null,
+    },
+    image5: {
+      name: "Legolas",
+      data: null,
+    },
+    image6: {
+      name: "Eye of Sauron",
+      data: null,
+    },
+    image7: {
+      name: "Bilbo Baggins",
+      data: null,
+    },
+    image8: {
+      name: "Balrog",
+      data: null,
+    },
+    image9: {
+      name: "The One Ring",
+      data: null,
+    },
+    image10: {
+      name: "Saruman",
+      data: null,
+    },
   });
 
-  //only called if dependency array changes??
   useEffect(() => {
-    if (Object.values(images).every((value) => value === null)) {
+    console.log(images);
+    if (Object.values(images).every((value) => value.data === null)) {
+      console.log("USING API CALL");
+      //can fix api calls on refresh later
+      //react query or conditionally change api key
       (async () => {
         try {
+          //could make all this on one line
+          //fetch().then(response => response.json).then()...
           const [
             response1,
             response2,
@@ -109,20 +144,21 @@ function Cards() {
             response10.json(),
           ]);
 
-          console.log(response9);
-
           setImages({
             ...images,
-            image1: data1.data.images.original.url,
-            image2: data2.data.images.original.url,
-            image3: data3.data.images.original.url,
-            image4: data4.data.images.original.url,
-            image5: data5.data.images.original.url,
-            image6: data6.data.images.original.url,
-            image7: data7.data.images.original.url,
-            image8: data8.data.images.original.url,
-            image9: data9.data.images.original.url,
-            image10: data10.data.images.original.url,
+            image1: { ...images.image1, data: data1.data.images.original.url },
+            image2: { ...images.image2, data: data2.data.images.original.url },
+            image3: { ...images.image3, data: data3.data.images.original.url },
+            image4: { ...images.image4, data: data4.data.images.original.url },
+            image5: { ...images.image5, data: data5.data.images.original.url },
+            image6: { ...images.image6, data: data6.data.images.original.url },
+            image7: { ...images.image7, data: data7.data.images.original.url },
+            image8: { ...images.image8, data: data8.data.images.original.url },
+            image9: { ...images.image9, data: data9.data.images.original.url },
+            image10: {
+              ...images.image10,
+              data: data10.data.images.original.url,
+            },
           });
         } catch (error) {
           console.log(error);
@@ -131,40 +167,35 @@ function Cards() {
     }
   }, []);
 
+  function handleClick(e) {
+    props.onClick(e.target.id);
+    //randomize here?
+  }
+
   return (
     <div className="card-container">
-      <div>
-        <img alt="Image1" src={images.image1} />
-      </div>
-      <div>
-        <img alt="Image2" src={images.image2} />
-      </div>
-      <div>
-        <img alt="Image3" src={images.image3} />
-      </div>
-      <div>
-        <img alt="Image4" src={images.image4} />
-      </div>
-      <div>
-        <img alt="Image5" src={images.image5} />
-      </div>
-      <div>
-        <img alt="Image6" src={images.image6} />
-      </div>
-      <div>
-        <img alt="Image7" src={images.image7} />
-      </div>
-      <div>
-        <img alt="Image8" src={images.image8} />
-      </div>
-      <div>
-        <img alt="Image9" src={images.image9} />
-      </div>
-      <div>
-        <img alt="Image10" src={images.image10} />
-      </div>
+      <Card name={images.image1.name} data={images.image1.data} />
+      <Card name={images.image2.name} data={images.image2.data} />
+      <Card name={images.image3.name} data={images.image3.data} />
+      <Card name={images.image4.name} data={images.image4.data} />
+      <Card name={images.image5.name} data={images.image5.data} />
+      <Card name={images.image6.name} data={images.image6.data} />
+      <Card name={images.image7.name} data={images.image7.data} />
+      <Card name={images.image8.name} data={images.image8.data} />
+      <Card name={images.image9.name} data={images.image9.data} />
+      <Card name={images.image10.name} data={images.image10.data} />
     </div>
   );
 }
 
-export default Cards;
+function Card(props) {
+  console.log(props, "props");
+  return (
+    <div className="card">
+      <img src={props.data} alt="" />
+      <div>{props.name}</div>
+    </div>
+  );
+}
+
+export default CardsController;
