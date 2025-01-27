@@ -18,7 +18,7 @@ function App() {
         setBestScore(score + 1);
       }
       if (score + 1 === 10) {
-        console.log("YOU WIN!");
+        setScore("YOU WIN!");
       }
     }
   }

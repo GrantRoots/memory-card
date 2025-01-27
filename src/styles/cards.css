@@ -4,17 +4,29 @@
   gap: 0.5rem;
   padding: 1rem;
   outline: 1px solid black;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(
+    101deg,
+    rgba(0, 0, 0, 1) 12%,
+    rgba(186, 22, 22, 1) 42%,
+    rgba(255, 165, 0, 1) 70%,
+    rgba(0, 0, 0, 1) 90%
+  );
 }
-
-/* gradient background */
 .card-container > div {
   outline: 1px solid black;
+}
+
+.card {
+  background: linear-gradient(30deg, black, rgb(86, 80, 70));
+  padding: 0.3rem;
 }
 
 .card > div {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
 }
 
 img {
