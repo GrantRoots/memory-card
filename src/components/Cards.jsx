@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import "../styles/cards.css";
 
 function CardsController(props) {
-  // is there a way to make it so I know which ones which
   const [images, setImages] = useState({
     image1: {
       name: "Aragorn",
@@ -169,30 +168,129 @@ function CardsController(props) {
 
   function handleClick(e) {
     props.onClick(e.target.id);
-    //randomize here?
+
+    //shuffle images
+    const entries = Object.entries(images);
+    for (let i = entries.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [entries[i], entries[j]] = [entries[j], entries[i]];
+    }
+
+    setImages({
+      ...images,
+      image1: {
+        ...images.image1,
+        name: entries[0][1].name,
+        data: entries[0][1].data,
+      },
+      image2: {
+        ...images.image1,
+        name: entries[1][1].name,
+        data: entries[1][1].data,
+      },
+      image3: {
+        ...images.image1,
+        name: entries[2][1].name,
+        data: entries[2][1].data,
+      },
+      image4: {
+        ...images.image1,
+        name: entries[3][1].name,
+        data: entries[3][1].data,
+      },
+      image5: {
+        ...images.image1,
+        name: entries[4][1].name,
+        data: entries[4][1].data,
+      },
+      image6: {
+        ...images.image1,
+        name: entries[5][1].name,
+        data: entries[5][1].data,
+      },
+      image7: {
+        ...images.image1,
+        name: entries[6][1].name,
+        data: entries[6][1].data,
+      },
+      image8: {
+        ...images.image1,
+        name: entries[7][1].name,
+        data: entries[7][1].data,
+      },
+      image9: {
+        ...images.image1,
+        name: entries[8][1].name,
+        data: entries[8][1].data,
+      },
+      image10: {
+        ...images.image1,
+        name: entries[9][1].name,
+        data: entries[9][1].data,
+      },
+    });
   }
 
   return (
     <div className="card-container">
-      <Card name={images.image1.name} data={images.image1.data} />
-      <Card name={images.image2.name} data={images.image2.data} />
-      <Card name={images.image3.name} data={images.image3.data} />
-      <Card name={images.image4.name} data={images.image4.data} />
-      <Card name={images.image5.name} data={images.image5.data} />
-      <Card name={images.image6.name} data={images.image6.data} />
-      <Card name={images.image7.name} data={images.image7.data} />
-      <Card name={images.image8.name} data={images.image8.data} />
-      <Card name={images.image9.name} data={images.image9.data} />
-      <Card name={images.image10.name} data={images.image10.data} />
+      <Card
+        name={images.image1.name}
+        data={images.image1.data}
+        onClick={handleClick}
+      />
+      <Card
+        name={images.image2.name}
+        data={images.image2.data}
+        onClick={handleClick}
+      />
+      <Card
+        name={images.image3.name}
+        data={images.image3.data}
+        onClick={handleClick}
+      />
+      <Card
+        name={images.image4.name}
+        data={images.image4.data}
+        onClick={handleClick}
+      />
+      <Card
+        name={images.image5.name}
+        data={images.image5.data}
+        onClick={handleClick}
+      />
+      <Card
+        name={images.image6.name}
+        data={images.image6.data}
+        onClick={handleClick}
+      />
+      <Card
+        name={images.image7.name}
+        data={images.image7.data}
+        onClick={handleClick}
+      />
+      <Card
+        name={images.image8.name}
+        data={images.image8.data}
+        onClick={handleClick}
+      />
+      <Card
+        name={images.image9.name}
+        data={images.image9.data}
+        onClick={handleClick}
+      />
+      <Card
+        name={images.image10.name}
+        data={images.image10.data}
+        onClick={handleClick}
+      />
     </div>
   );
 }
 
 function Card(props) {
-  console.log(props, "props");
   return (
-    <div className="card">
-      <img src={props.data} alt="" />
+    <div className="card" onClick={props.onClick}>
+      <img src={props.data} alt={props.name} />
       <div>{props.name}</div>
     </div>
   );
