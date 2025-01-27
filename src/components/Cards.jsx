@@ -166,8 +166,8 @@ function CardsController(props) {
     }
   }, []);
 
-  function handleClick(e) {
-    props.onClick(e.target.id);
+  function handleClick(cardName) {
+    props.onClick(cardName);
 
     //shuffle images
     const entries = Object.entries(images);
@@ -236,52 +236,72 @@ function CardsController(props) {
       <Card
         name={images.image1.name}
         data={images.image1.data}
-        onClick={handleClick}
+        onClick={() => {
+          handleClick(images.image1.name);
+        }}
       />
       <Card
         name={images.image2.name}
         data={images.image2.data}
-        onClick={handleClick}
+        onClick={() => {
+          handleClick(images.image2.name);
+        }}
       />
       <Card
         name={images.image3.name}
         data={images.image3.data}
-        onClick={handleClick}
+        onClick={() => {
+          handleClick(images.image3.name);
+        }}
       />
       <Card
         name={images.image4.name}
         data={images.image4.data}
-        onClick={handleClick}
+        onClick={() => {
+          handleClick(images.image4.name);
+        }}
       />
       <Card
         name={images.image5.name}
         data={images.image5.data}
-        onClick={handleClick}
+        onClick={() => {
+          handleClick(images.image5.name);
+        }}
       />
       <Card
         name={images.image6.name}
         data={images.image6.data}
-        onClick={handleClick}
+        onClick={() => {
+          handleClick(images.image6.name);
+        }}
       />
       <Card
         name={images.image7.name}
         data={images.image7.data}
-        onClick={handleClick}
+        onClick={() => {
+          handleClick(images.image7.name);
+        }}
       />
       <Card
         name={images.image8.name}
         data={images.image8.data}
-        onClick={handleClick}
+        onClick={() => {
+          handleClick(images.image8.name);
+        }}
       />
       <Card
         name={images.image9.name}
         data={images.image9.data}
-        onClick={handleClick}
+        onClick={() => {
+          handleClick(images.image9.name);
+        }}
       />
       <Card
         name={images.image10.name}
         data={images.image10.data}
-        onClick={handleClick}
+        onClick={() => {
+          handleClick(images.image10.name);
+        }}
       />
     </div>
   );

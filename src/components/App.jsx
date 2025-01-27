@@ -7,13 +7,12 @@ function App() {
   const [bestScore, setBestScore] = useState(0);
   const [clicked, setClicked] = useState([]);
 
-  function handleClick(inputId) {
-    console.log("clicked");
-    if (clicked.includes(inputId)) {
+  function handleClick(cardName) {
+    if (clicked.includes(cardName)) {
       setScore(0);
-      //randomize
+      setClicked([]);
     } else {
-      setClicked([...clicked, inputId]);
+      setClicked([...clicked, cardName]);
       setScore(score + 1);
       if (score + 1 > bestScore) {
         setBestScore(score + 1);
@@ -21,7 +20,6 @@ function App() {
       if (score + 1 === 10) {
         console.log("YOU WIN!");
       }
-      //randomize
     }
   }
 
@@ -32,7 +30,7 @@ function App() {
         <h1>LOTR Memory Game</h1>
         <div>
           <div>Score: {score}</div>
-          <div>Best Score: {score}</div>
+          <div>Best Score: {bestScore}</div>
         </div>
       </header>
       <CardsController onClick={handleClick} />
