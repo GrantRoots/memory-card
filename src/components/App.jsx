@@ -25,16 +25,16 @@ function App() {
 
   //add fonts
   return (
-    <div className="container">
+    <>
       <header>
         <h1>LOTR Memory Game</h1>
-        <div>
+        <div className="scores">
           <div>Score: {score}</div>
           <div>Best Score: {bestScore}</div>
         </div>
       </header>
       <CardsController onClick={handleClick} />
-    </div>
+    </>
   );
 }
 

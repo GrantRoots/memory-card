@@ -4,7 +4,6 @@
   gap: 0.5rem;
   padding: 1rem;
   outline: 1px solid black;
-  background: rgb(0, 0, 0);
   background: linear-gradient(
     101deg,
     rgba(0, 0, 0, 1) 12%,
@@ -18,7 +17,7 @@
 }
 
 .card {
-  background: linear-gradient(30deg, black, rgb(86, 80, 70));
+  background: linear-gradient(0.25turn, black, rgb(61, 57, 50));
   padding: 0.3rem;
 }
 
@@ -27,6 +26,8 @@
   justify-content: center;
   align-items: center;
   color: white;
+  font-family: "Bilbo";
+  font-size: 2rem;
 }
 
 img {

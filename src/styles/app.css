@@ -8,8 +8,15 @@ header {
   justify-content: space-between;
   padding: 1rem;
   height: 6.3vh;
+  font-family: "Roboto";
+  background-color: rgb(61, 57, 50);
+  color: white;
 }
 
 h1 {
   margin: 0;
+}
+
+.scores {
+  font-size: 1.8rem;
 }
